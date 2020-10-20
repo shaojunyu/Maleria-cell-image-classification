@@ -2,6 +2,9 @@
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, f1_score
 import matplotlib.pyplot as plt
 
+## for loading history
+import json
+
 def plot_loss_acc(history_file, epochs):
     with open(history_file, 'r') as fp:
         train_val_history = json.load(fp)
@@ -13,8 +16,8 @@ def plot_loss_acc(history_file, epochs):
 
     ## plot training/validation loss
     plt.figure()
-    plt.plot(epochs, train_loss, 'r--', label="Training Loss")
-    plt.plot(epochs, val_loss, 'b--', label="Validation Loss")
+    plt.plot(range(epochs), train_loss, 'r-', label="Training Loss")
+    plt.plot(range(epochs), val_loss, 'b-', label="Validation Loss")
     plt.legend()
     plt.ylabel("Cross Entropy Loss")
     plt.xlabel("Epochs")
@@ -23,8 +26,8 @@ def plot_loss_acc(history_file, epochs):
 
     ## plot training/validition accuracy
     plt.figure()
-    plt.plot(epochs, train_acc, 'r--', label="Training Acc")
-    plt.plot(epochs, val_acc, 'b--', label="Validation Acc")
+    plt.plot(range(epochs), train_acc, 'r--', label="Training Acc")
+    plt.plot(range(epochs), val_acc, 'b--', label="Validation Acc")
     plt.legend()
     plt.ylabel("Accuracy")
     plt.xlabel("Epochs")
@@ -38,7 +41,7 @@ def plot_curves(y_true, y_pred):
 
     ## plot AUROC curve
     plt.figure()
-    plt.plot(fpr, tpr, 'b--', label="AUC=%0.2f"%auc(fpr, tpr))
+    plt.plot(fpr, tpr, 'b-', label="AUC=%0.2f"%auc(fpr, tpr))
     plt.legend(loc = 'lower right')
     plt.plot([0, 1], [0, 1],'r--')
     plt.xlim([0, 1])
@@ -53,7 +56,7 @@ def plot_curves(y_true, y_pred):
 
     ## plot AUPR curve
     plt.figure()
-    plt.plot(recall, precision, 'b--', label="F1=%0.2f"%f1(y_true, y_pred))
+    plt.plot(recall, precision, 'b-', label="F1=%0.2f"%f1_score(y_true, y_pred))
     plt.legend(loc = 'lower left')
     plt.xlim([0, 1])
     plt.ylim([0, 1])
