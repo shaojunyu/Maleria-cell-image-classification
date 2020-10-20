@@ -27,3 +27,8 @@ dense_2 (Dense)              (None, 2)                 1002
 Total params: 1,164,046
 Trainable params: 1,164,046
 Non-trainable params: 0
+
+Loss and Accuracy: [0.2789698895718117, 0.9615384615384616]
+Confusion matrix: [[1314   35]
+ [  71 1336]]
+f1 score is:  0.9618430525557955
