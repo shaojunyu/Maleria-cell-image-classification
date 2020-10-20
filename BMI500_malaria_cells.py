@@ -87,8 +87,9 @@ print("f1 score is: ", f1_score(y_true, y_pred))
 ## save model
 model.save("cells.h5")
 
-## plotting
-plot_malaria_cells.plot_loss(TRAIN_VAL_HISTORY, EPOCHS)
+## plotting loss and accuracy
+plot_malaria_cells.plot_loss_acc(TRAIN_VAL_HISTORY, EPOCHS)
+plot_malaria_cells.plot_curves(y_true, y_pred)
 
 ## plot out AUROC
 # Compute ROC curve and ROC area for each class

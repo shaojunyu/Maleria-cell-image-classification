@@ -2,3 +2,10 @@
 
 # Mac OS
 .DS_Store
+
+# slurm output
+*.out
+*.err
+
+# big file
+*.npy
